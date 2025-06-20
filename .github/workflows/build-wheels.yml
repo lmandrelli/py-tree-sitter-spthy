@@ -27,21 +27,17 @@ jobs:
     - name: Install Tree-sitter CLI
       run: cargo install tree-sitter-cli
 
-    - name: Generate parser
-      run: |
-        cd grammars/tamarin-prover/tree-sitter/tree-sitter-spthy
-        tree-sitter generate
 
     - name: Build wheels
       uses: pypa/cibuildwheel@v2.16.2
       env:
         CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
         CIBW_SKIP: "*-win32 *-manylinux_i686 *-musllinux*"
-        CIBW_BEFORE_BUILD: pip install setuptools wheel
+        CIBW_BEFORE_BUILD: pip install setuptools wheel && (cd grammars/tamarin-prover/tree-sitter/tree-sitter-spthy && tree-sitter generate)
         # Ensure generated files are included
-        CIBW_BEFORE_BUILD_LINUX: apt install -y gcc gcc-c++ && pip install setuptools wheel
-        CIBW_BEFORE_BUILD_MACOS: pip install setuptools wheel
-        CIBW_BEFORE_BUILD_WINDOWS: pip install setuptools wheel
+        CIBW_BEFORE_BUILD_LINUX: apt install -y gcc gcc-c++ && pip install setuptools wheel && (cd grammars/tamarin-prover/tree-sitter/tree-sitter-spthy && tree-sitter generate)
+        CIBW_BEFORE_BUILD_MACOS: pip install setuptools wheel && (cd grammars/tamarin-prover/tree-sitter/tree-sitter-spthy && tree-sitter generate)
+        CIBW_BEFORE_BUILD_WINDOWS: pip install setuptools wheel && (cd grammars/tamarin-prover/tree-sitter/tree-sitter-spthy && tree-sitter generate)
 
     - uses: actions/upload-artifact@v4
       with:
