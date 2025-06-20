@@ -1,0 +1,29 @@
+# py-tree-sitter-spthy
+
+This project provides Python bindings for the SPTHY grammar, based on the [tree-sitter grammar from tamarin-prover](https://github.com/tamarin-prover/tamarin-prover).
+
+The grammar is compiled and made accessible on PyPI, allowing integration with the `tree-sitter` library in Python. This enables parsing and analysis of SPTHY files directly from Python code.
+
+## Features
+
+- SPTHY grammar support for tree-sitter in Python
+- Easy installation via PyPI
+- Direct integration with the `tree-sitter` Python library
+
+## Installation
+
+```bash
+pip install py-tree-sitter-spthy
+```
+
+## Usage
+
+You can use this package with the `tree-sitter` Python library to parse SPTHY files.
+
+## License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+## Contributing
+
+Contributions are welcome! Please open issues or pull requests for improvements or bug fixes.
