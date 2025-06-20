@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# call in top-level dir...
-docker build -t protocolplatform/tamarin -f etc/docker/Dockerfile .

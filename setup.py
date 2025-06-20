@@ -4,7 +4,7 @@ import glob
 
 def get_tree_sitter_sources():
     """Get generated C source files"""
-    grammar_dir = "grammars/tamarin-prover/tree-sitter/tree-sitter-spthy/src"
+    grammar_dir = "grammars/tree-sitter-spthy/src"
     sources = []
     if os.path.exists(grammar_dir):
         sources.extend(glob.glob(f"{grammar_dir}/*.c"))
@@ -13,10 +13,10 @@ def get_tree_sitter_sources():
 # C Extension for the compiled grammar
 tree_sitter_ext = Extension(
     'tree_sitter_spthy.binding',
-    sources=get_tree_sitter_sources() + ['grammars/tamarin-prover/tree-sitter/tree-sitter-spthy/bindings/python/tree_sitter_spthy/binding.c'],
+    sources=get_tree_sitter_sources() + ['grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy/binding.c'],
     include_dirs=[
-        'grammars/tamarin-prover/tree-sitter/tree-sitter-spthy/src',
-        'grammars/tamarin-prover/tree-sitter/tree-sitter-spthy/bindings/python/tree_sitter_spthy',
+        'grammars/tree-sitter-spthy/src',
+        'grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy',
     ],
     define_macros=[('TREE_SITTER_HIDE_SYMBOLS', None)],
 )
@@ -34,7 +34,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/lmandrelli/py-tree-sitter-spthy",
     packages=['tree_sitter_spthy'],
-    package_dir={'tree_sitter_spthy': 'grammars/tamarin-prover/tree-sitter/tree-sitter-spthy/bindings/python/tree_sitter_spthy'},
+    package_dir={'tree_sitter_spthy': 'grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy'},
     ext_modules=[tree_sitter_ext],
     package_data={
         'tree_sitter_spthy': ['*.c', 'py.typed', '*.pyi'],

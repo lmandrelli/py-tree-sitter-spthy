@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# call in top-level dir...
-docker build -t robertkuennemann/sapicplusplatformbench -f etc/docker/Dockerfile-benchmarks .
