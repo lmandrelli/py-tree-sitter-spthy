@@ -22,7 +22,7 @@ You can use this package with the `tree-sitter` Python library to parse SPTHY fi
 
 ## License
 
-This project is licensed under the [MIT License](./LICENSE).
+This project is licensed under the [GNU GPLv3 License](./LICENSE).
 
 ## Contributing
 

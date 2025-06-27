@@ -2,9 +2,8 @@ name: Build Cross-Platform Wheels
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    tags:
+      - release
   workflow_dispatch:
 
 jobs:
