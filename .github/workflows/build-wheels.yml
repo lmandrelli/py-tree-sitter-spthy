@@ -3,8 +3,7 @@ name: Build Cross-Platform Wheels
 on:
   push:
     tags:
-      - release
-  workflow_dispatch:
+      - "v*"
 
 jobs:
   build_wheels:
