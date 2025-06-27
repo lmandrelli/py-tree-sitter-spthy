@@ -12,7 +12,7 @@ def get_tree_sitter_sources():
 
 # C Extension for the compiled grammar
 tree_sitter_ext = Extension(
-    'tree_sitter_spthy.binding',
+    'tree_sitter_spthy._binding',
     sources=get_tree_sitter_sources() + ['grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy/binding.c'],
     include_dirs=[
         'grammars/tree-sitter-spthy/src',

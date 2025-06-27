@@ -16,48 +16,33 @@ jobs:
       fail-fast: false
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        submodules: recursive
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
-    # Install platform-specific build dependencies
-    - name: Install build dependencies (Linux)
-      if: runner.os == 'Linux'
-      run: sudo apt-get update && sudo apt-get install -y gcc g++
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.16.2
+        env:
+          CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
+          CIBW_SKIP: "*-win32 *-manylinux_i686 *-musllinux*"
+          CIBW_BEFORE_BUILD: python -m pip install --upgrade pip setuptools wheel
 
-    # Install Tree-sitter CLI via Cargo (most reliable across platforms)
-    - name: Install Rust
-      uses: dtolnay/rust-toolchain@stable
-
-    - name: Install Tree-sitter CLI
-      run: cargo install tree-sitter-cli
-
-
-    - name: Build wheels
-      uses: pypa/cibuildwheel@v2.16.2
-      env:
-        CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
-        CIBW_SKIP: "*-win32 *-manylinux_i686 *-musllinux*"
-        CIBW_BEFORE_BUILD: pip install setuptools wheel && (cd grammars/tree-sitter-spthy && tree-sitter generate)
-        CIBW_BEFORE_BUILD_MACOS: pip install setuptools wheel && (cd grammars/tree-sitter-spthy && tree-sitter generate)
-        CIBW_BEFORE_BUILD_WINDOWS: pip install setuptools wheel && (cd grammars/tree-sitter-spthy && tree-sitter generate)
-
-    - uses: actions/upload-artifact@v4
-      with:
-        name: wheels-${{ matrix.os }}
-        path: ./wheelhouse/*.whl
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wheels-${{ matrix.os }}
+          path: ./wheelhouse/*.whl
 
   upload_pypi:
     needs: [build_wheels]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     steps:
-    - uses: actions/download-artifact@v4
-      with:
-        pattern: wheels-*
-        path: dist
-        merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: wheels-*
+          path: dist
+          merge-multiple: true
 
-    - uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
