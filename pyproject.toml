@@ -1,8 +1,7 @@
 [build-system]
 requires = [
     "setuptools>=45",
-    "wheel",
-    "setuptools-scm[toml]>=6.2"
+    "wheel"
 ]
 build-backend = "setuptools.build_meta"
 
@@ -33,7 +32,7 @@ requires-python = ">=3.8"
 dependencies = [
     "tree-sitter>=0.20.0",
 ]
-dynamic = ["version"]
+version = "1.0.1"
 
 [project.optional-dependencies]
 dev = [
@@ -46,9 +45,6 @@ dev = [
 Homepage = "https://github.com/lmandrelli/py-tree-sitter-spthy"
 Repository = "https://github.com/lmandrelli/py-tree-sitter-spthy"
 Issues = "https://github.com/lmandrelli/py-tree-sitter-spthy/issues"
-
-[tool.setuptools_scm]
-write_to = "py_tree_sitter_spthy/_version.py"
 
 [tool.black]
 line-length = 88

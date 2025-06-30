@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
 import os
 import glob
 
@@ -33,8 +33,11 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/lmandrelli/py-tree-sitter-spthy",
-    packages=['tree_sitter_spthy'],
-    package_dir={'tree_sitter_spthy': 'grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy'},
+    packages=['py_tree_sitter_spthy', 'tree_sitter_spthy'],
+    package_dir={
+        'py_tree_sitter_spthy': 'py_tree_sitter_spthy',
+        'tree_sitter_spthy': 'grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy'
+    },
     ext_modules=[tree_sitter_ext],
     package_data={
         'tree_sitter_spthy': ['*.c', 'py.typed', '*.pyi'],
