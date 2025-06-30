@@ -26,8 +26,9 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="py-tree-sitter-spthy",
+    version="1.0.1",
     author="Luca Mandrelli",
-    author_email="",
+    author_email="luca.mandrelli@icloud.com",
     description="Tree-sitter parser for Spthy language",
     long_description=long_description,
     long_description_content_type="text/markdown",
