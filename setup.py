@@ -1,4 +1,4 @@
-from setuptools import setup, Extension, find_packages
+from setuptools import setup, Extension
 import os
 import glob
 
@@ -26,7 +26,6 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="py-tree-sitter-spthy",
-    version="0.1.0",
     author="Luca Mandrelli",
     author_email="",
     description="Tree-sitter parser for Spthy language",
@@ -41,7 +40,7 @@ setup(
     },
     include_package_data=True,
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
@@ -51,6 +50,7 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
         "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Text Processing :: Linguistic",
     ],
