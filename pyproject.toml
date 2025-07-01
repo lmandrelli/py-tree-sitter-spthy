@@ -11,12 +11,14 @@ description = "Tree-sitter parser for Spthy language"
 readme = "README.md"
 license = "GPL-3.0-or-later"
 authors = [
-    {name = "Luca Mandrelli"}
+    {
+     name = "Luca Mandrelli",
+     email = "luca.mandrelli@icloud.com"
+    }
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
