@@ -9,14 +9,14 @@ build-backend = "setuptools.build_meta"
 name = "py-tree-sitter-spthy"
 description = "Tree-sitter parser for Spthy language"
 readme = "README.md"
-license = {text = "MIT"}
+license = "GPL-3.0-or-later"
 authors = [
     {name = "Luca Mandrelli"}
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
@@ -31,7 +31,7 @@ requires-python = ">=3.9"
 dependencies = [
     "tree-sitter>=0.20.0",
 ]
-version = "1.1.0"
+version = "1.1.1"
 
 [project.optional-dependencies]
 dev = [
