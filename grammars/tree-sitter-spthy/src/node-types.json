@@ -6377,7 +6377,6 @@
   {
     "type": "theory",
     "named": true,
-    "root": true,
     "fields": {
       "theory_name": {
         "multiple": false,
