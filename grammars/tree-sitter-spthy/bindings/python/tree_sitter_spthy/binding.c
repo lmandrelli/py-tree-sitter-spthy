@@ -5,7 +5,7 @@ typedef struct TSLanguage TSLanguage;
 TSLanguage *tree_sitter_spthy(void);
 
 static PyObject* _binding_language(PyObject *self, PyObject *args) {
-    return PyLong_FromVoidPtr(tree_sitter_spthy());
+    return PyCapsule_New(tree_sitter_spthy(), "tree_sitter.Language", NULL);
 }
 
 static PyMethodDef methods[] = {

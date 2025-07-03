@@ -29,7 +29,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="py-tree-sitter-spthy",
-    version="1.1.2",
+    version="1.2.0",
     author="Luca Mandrelli",
     author_email="luca.mandrelli@icloud.com",
     description="Tree-sitter parser for Spthy language",
