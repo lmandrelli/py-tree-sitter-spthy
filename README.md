@@ -1,6 +1,6 @@
 # py-tree-sitter-spthy
 
-[![PyPI version](https://img.shields.io/pypi/v/batch-tamarin.svg?color=blue)](https://pypi.org/project/py-tree-sitter-spthy/)
+[![PyPI version](https://img.shields.io/pypi/v/py-tree-sitter-spthy.svg?color=blue)](https://pypi.org/project/py-tree-sitter-spthy/)
 [![License](https://img.shields.io/badge/license-GPLv3-gold.svg)](./LICENSE)
 
 This project provides Python bindings for the SPTHY grammar, based on the [tree-sitter grammar from vscode-tamarin](https://github.com/tamarin-prover/vscode-tamarin/tree/a54f341f62f6ce9b79e04e5c3cfd6063c48d461f/src/grammar/tree-sitter-tamarin).
