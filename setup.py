@@ -1,6 +1,8 @@
-from setuptools import setup, find_packages, Extension
+from setuptools import setup, Extension, find_packages
+from setuptools.command.build_py import build_py
 import os
 import glob
+import shutil
 
 
 def get_tree_sitter_sources():
@@ -24,18 +26,26 @@ tree_sitter_ext = Extension(
     define_macros=[('TREE_SITTER_HIDE_SYMBOLS', None)],
 )
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+class CustomBuildPy(build_py):
+    """Custom build_py command to ensure all package files are copied"""
+
+    def run(self):
+        # Run the standard build_py
+        super().run()
+
+        # Ensure tree_sitter_spthy Python files are copied
+        src_dir = 'grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy'
+        dest_dir = os.path.join(self.build_lib, 'tree_sitter_spthy')
+
+        # Copy Python files that might be missing
+        for filename in ['__init__.py', '__init__.pyi', 'py.typed']:
+            src_path = os.path.join(src_dir, filename)
+            dest_path = os.path.join(dest_dir, filename)
+            if os.path.exists(src_path) and not os.path.exists(dest_path):
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy2(src_path, dest_path)
 
 setup(
-    name="py-tree-sitter-spthy",
-    version="1.2.0",
-    author="Luca Mandrelli",
-    author_email="luca.mandrelli@icloud.com",
-    description="Tree-sitter parser for Spthy language",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    url="https://github.com/lmandrelli/py-tree-sitter-spthy",
     packages=['py_tree_sitter_spthy', 'tree_sitter_spthy'],
     package_dir={
         'py_tree_sitter_spthy': 'py_tree_sitter_spthy',
@@ -43,25 +53,12 @@ setup(
     },
     ext_modules=[tree_sitter_ext],
     package_data={
+        'py_tree_sitter_spthy': ['py.typed', '*.pyi'],
         'tree_sitter_spthy': ['*.c', 'py.typed', '*.pyi'],
     },
     include_package_data=True,
-    classifiers=[
-        "Development Status :: 5 - Production/Stable",
-        "Intended Audience :: Developers",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
-        "Programming Language :: Python :: 3.12",
-        "Programming Language :: Python :: 3.13",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-        "Topic :: Text Processing :: Linguistic",
-    ],
-    python_requires=">=3.9",
-    license="GPL-3.0-or-later",
-    install_requires=[
-        "tree-sitter>=0.20.0",
-    ]
+    zip_safe=False,
+    cmdclass={
+        'build_py': CustomBuildPy,
+    },
 )

@@ -1,0 +1,12 @@
+include README.md
+include LICENSE*
+include py_tree_sitter_spthy/py.typed
+include grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy/py.typed
+include grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy/*.pyi
+include grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy/*.c
+include grammars/tree-sitter-spthy/src/*.c
+include grammars/tree-sitter-spthy/src/*.h
+include grammars/tree-sitter-spthy/grammar.js
+include grammars/tree-sitter-spthy/package.json
+recursive-include grammars/tree-sitter-spthy/queries *.scm
+recursive-include grammars/tree-sitter-spthy/test *.txt
