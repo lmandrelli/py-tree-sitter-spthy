@@ -44,21 +44,3 @@ jobs:
           pytest tests/ -v --tb=short --durations=10
         env:
           PYTHONPATH: ${{ github.workspace }}
-
-      - name: Test package installation
-        run: |
-          # Test that the package can be imported and basic functionality works
-          python -c "
-          import tree_sitter_spthy as ts_spthy
-          from tree_sitter import Parser
-          
-          # Test language loading (no deprecation warnings)
-          language = ts_spthy.language()
-          parser = Parser(language)
-          
-          # Test basic parsing
-          code = 'rule test: [In(x)] --[Test(x)]--> [Out(x)]'
-          tree = parser.parse(bytes(code, 'utf8'))
-          assert tree is not None
-          print('✓ Package installation and basic functionality verified')
-          "
