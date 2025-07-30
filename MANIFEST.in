@@ -1,5 +1,6 @@
 include README.md
 include LICENSE*
+recursive-include tests *.py *.spthy
 include py_tree_sitter_spthy/py.typed
 include grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy/py.typed
 include grammars/tree-sitter-spthy/bindings/python/tree_sitter_spthy/*.pyi
